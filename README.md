@@ -7,3 +7,6 @@
 1. 可根据Excel表格生成SQL文件导出到本地
 2. 自动创建数据表
 3. 根据数据表自动创建Mybatis Plus项目代码包含（实体类，mapper文件与XML，service层文件，controller文件）
+
+### 待办（TODO）
+1.添加自定义Mybatis_Plus生成代码模板
