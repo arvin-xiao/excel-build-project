@@ -10,3 +10,7 @@
 
 ### 待办（TODO）
 1.添加自定义Mybatis_Plus生成代码模板
+
+
+### 快速使用
+修改resouces目录下的template_excel.xlsx和config.properties文件启动即可
