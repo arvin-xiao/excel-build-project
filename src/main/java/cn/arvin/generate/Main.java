@@ -28,6 +28,7 @@ public class Main {
 
         if (properties.isBuildJava()) {
             BuildJavaProject.build(properties);
+            log.info("构建java项目成功");
         }
 
         log.info("程序结束");
