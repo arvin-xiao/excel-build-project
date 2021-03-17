@@ -44,14 +44,14 @@ public class BuildJavaProject {
                 .setEntityLombokModel(true)
                 .setDbColumnUnderline(true)
                 .setNaming(NamingStrategy.underline_to_camel);
-                if(StringUtils.isNotEmpty(properties.getBuildConf().getExcludeTable())){
-                    //需要忽略的表名
-                    strategyConfig.setExclude(properties.getBuildConf().getExcludeTable().split(","));
-                }
-                if(StringUtils.isNotEmpty(properties.getBuildConf().getIncludeTable())){
-                    //修改替换成你需要的表名，多个表名传数组
-                    strategyConfig.setInclude(properties.getBuildConf().getIncludeTable().split(","));
-                }
+        if (StringUtils.isNotEmpty(properties.getBuildConf().getExcludeTable())) {
+            //需要忽略的表名
+            strategyConfig.setExclude(properties.getBuildConf().getExcludeTable().split(","));
+        }
+        if (StringUtils.isNotEmpty(properties.getBuildConf().getIncludeTable())) {
+            //修改替换成你需要的表名，多个表名传数组
+            strategyConfig.setInclude(properties.getBuildConf().getIncludeTable().split(","));
+        }
         config.setActiveRecord(false)
                 //作者
                 .setAuthor(properties.getBuildConf().getAuthor())
