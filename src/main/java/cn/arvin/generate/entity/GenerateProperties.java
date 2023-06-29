@@ -52,6 +52,7 @@ public class GenerateProperties {
         private String author;
         private String excludeTable;
         private String includeTable;
+        private String tablePrefix;
     }
 
 }

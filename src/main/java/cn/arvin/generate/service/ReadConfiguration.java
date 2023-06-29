@@ -31,7 +31,7 @@ public class ReadConfiguration {
         Props props = new Props(new File(root, CON_NAME), StandardCharsets.UTF_8);
 
         generateProperties = new GenerateProperties();
-        generateProperties.setExcelPath(jarLocal+props.getStr("excelPath"));
+        generateProperties.setExcelPath(jarLocal + props.getStr("excelPath"));
         generateProperties.setExportSqlDir(props.getStr("exportSqlDir"));
         generateProperties.setAutoRunScript(props.getBool("autoRunScript", false));
         GenerateProperties.DataSource dataSource = new GenerateProperties.DataSource();
@@ -47,6 +47,7 @@ public class ReadConfiguration {
         GenerateProperties.BuildConf buildConf = new GenerateProperties.BuildConf();
         buildConf.setAuthor(props.getStr("buildConf.author"));
         buildConf.setPackageName(props.getStr("buildConf.packageName"));
+        buildConf.setTablePrefix(props.getStr("buildConf.tablePrefix"));
         buildConf.setExcludeTable(props.getStr("buildConf.excludeTable"));
         buildConf.setIncludeTable(props.getStr("buildConf.includeTable"));
         generateProperties.setBuildConf(buildConf);

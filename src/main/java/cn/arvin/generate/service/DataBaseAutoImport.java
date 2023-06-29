@@ -37,6 +37,7 @@ public class DataBaseAutoImport {
         try {
             mysqlDataSource.setServerTimezone("Asia/Shanghai");
             mysqlDataSource.setCharacterEncoding("UTF-8");
+            mysqlDataSource.setUseSSL(false);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,13 +52,13 @@ public class DataBaseAutoImport {
      */
     public void execute(List<String> script) {
         try {
-            String sqls[] = new String[script.size()];
+            String[] sqlScripts = new String[script.size()];
             for (int i = 0; i < script.size(); i++) {
-                sqls[i] = script.get(i).replaceAll("\n", " ");
+                sqlScripts[i] = script.get(i).replaceAll("\n", " ");
             }
             log.info("批量执行建表SQL = " + script);
             session.beginTransaction();
-            int[] rows = session.executeBatch(sqls);
+            int[] rows = session.executeBatch(sqlScripts);
             session.commit();
             log.info("批量执行建表数 = " + rows.length);
         } catch (Exception e) {
