@@ -68,6 +68,7 @@ public class ReadExcel {
 
     /**
      * 生成多个表字符串表示形式 list
+     *
      * @return
      */
     public List<String> getScriptList() {
@@ -75,8 +76,7 @@ public class ReadExcel {
 
         for (SqlTable item : tables) {
             StringBuffer sb = new StringBuffer();
-            sb.append("CREATE TABLE `").append(item.getTableName()).append("` (")
-                    .append("\n");
+            sb.append("CREATE TABLE `").append(item.getTableName()).append("` (").append("\n");
             String key = null;
             for (ExcelRow row : item.getRows()) {
                 sb.append("`").append(row.getField()).append("` ").append(row.getDataType()).append(" ");
@@ -85,8 +85,7 @@ public class ReadExcel {
                     sb.append(" NOT NULL ");
                 }
                 //获取主键
-                if (StringUtils.equals(StringUtils.lowerCase(row.getKey()), "yes")
-                        || StringUtils.equals(StringUtils.lowerCase(row.getKey()), "pk")) {
+                if (StringUtils.equals(StringUtils.lowerCase(row.getKey()), "yes") || StringUtils.equals(StringUtils.lowerCase(row.getKey()), "pk")) {
                     key = row.getField();
                 }
                 //是否有默认值
@@ -102,8 +101,7 @@ public class ReadExcel {
                 sb.append(" COMMENT '").append(row.getDesc()).append("',").append("\n");
             }
             sb.append("PRIMARY KEY (`").append(key).append("`)").append("\n").append(")");
-            sb.append(" ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COMMENT='").append(item.getTableDesc())
-                    .append("';");
+            sb.append(" ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='").append(item.getTableDesc()).append("';");
             script.add(sb.toString());
         }
         return script;
@@ -111,6 +109,7 @@ public class ReadExcel {
 
     /**
      * 返回字符串的形式
+     *
      * @return
      */
     public String toScriptStr() {
@@ -125,6 +124,7 @@ public class ReadExcel {
 
     /**
      * 获取表名
+     *
      * @param table
      * @return
      */
@@ -158,6 +158,7 @@ public class ReadExcel {
 
     /**
      * 获取字段
+     *
      * @return
      */
     private List<ExcelRow> readFiled() {

@@ -31,7 +31,7 @@ public class ReadConfiguration {
         Props props = new Props(new File(root, CON_NAME), StandardCharsets.UTF_8);
 
         generateProperties = new GenerateProperties();
-        generateProperties.setExcelPath(jarLocal+props.getStr("excelPath"));
+        generateProperties.setExcelPath(jarLocal + props.getStr("excelPath"));
         generateProperties.setExportSqlDir(props.getStr("exportSqlDir"));
         generateProperties.setAutoRunScript(props.getBool("autoRunScript", false));
         GenerateProperties.DataSource dataSource = new GenerateProperties.DataSource();
