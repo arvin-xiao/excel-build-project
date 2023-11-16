@@ -14,19 +14,16 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 读取excel文件
  */
 public class ReadExcel {
 
+    private final GenerateProperties properties;
 
-    private GenerateProperties properties;
-
-    private List<SqlTable> tables;
+    private final List<SqlTable> tables;
 
     private int sheetIndex = 1;
 
@@ -35,7 +32,6 @@ public class ReadExcel {
     public ReadExcel(GenerateProperties properties) {
         this.properties = properties;
         this.tables = new ArrayList<>();
-        this.sheetIndex = 1;
         readExcel();
     }
 
@@ -75,7 +71,7 @@ public class ReadExcel {
         List<String> script = new ArrayList<>();
 
         for (SqlTable item : tables) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append("CREATE TABLE `").append(item.getTableName()).append("` (").append("\n");
             String key = null;
             for (ExcelRow row : item.getRows()) {
@@ -85,7 +81,8 @@ public class ReadExcel {
                     sb.append(" NOT NULL ");
                 }
                 //获取主键
-                if (StringUtils.equals(StringUtils.lowerCase(row.getKey()), "yes") || StringUtils.equals(StringUtils.lowerCase(row.getKey()), "pk")) {
+                if (StringUtils.equals(StringUtils.lowerCase(row.getKey()), "yes")
+                        || StringUtils.equals(StringUtils.lowerCase(row.getKey()), "pk")) {
                     key = row.getField();
                 }
                 //是否有默认值
@@ -101,7 +98,7 @@ public class ReadExcel {
                 sb.append(" COMMENT '").append(row.getDesc()).append("',").append("\n");
             }
             sb.append("PRIMARY KEY (`").append(key).append("`)").append("\n").append(")");
-            sb.append(" ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='").append(item.getTableDesc()).append("';");
+            sb.append(" ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='").append(item.getTableDesc()).append("';");
             script.add(sb.toString());
         }
         return script;
@@ -114,7 +111,7 @@ public class ReadExcel {
      */
     public String toScriptStr() {
         List<String> script = getScriptList();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < script.size(); i++) {
             sb.append("-- 数据表").append(i + 1).append("\n");
             sb.append(script.get(i)).append("\n\n");

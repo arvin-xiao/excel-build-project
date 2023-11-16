@@ -47,6 +47,7 @@ public class ReadConfiguration {
         GenerateProperties.BuildConf buildConf = new GenerateProperties.BuildConf();
         buildConf.setAuthor(props.getStr("buildConf.author"));
         buildConf.setPackageName(props.getStr("buildConf.packageName"));
+        buildConf.setTablePrefix(props.getStr("buildConf.tablePrefix"));
         buildConf.setExcludeTable(props.getStr("buildConf.excludeTable"));
         buildConf.setIncludeTable(props.getStr("buildConf.includeTable"));
         generateProperties.setBuildConf(buildConf);
