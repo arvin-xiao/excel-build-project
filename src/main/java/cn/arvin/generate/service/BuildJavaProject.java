@@ -55,10 +55,10 @@ public class BuildJavaProject {
                     String[] excludeTables = properties.getBuildConf().getExcludeTable().split(",");
                     List<String> includes = Stream.of(includeTables).filter(StringUtils::isNotBlank).collect(Collectors.toList());
                     List<String> excludes = Stream.of(excludeTables).filter(StringUtils::isNotBlank).collect(Collectors.toList());
-                    if (includes.size() > 0) {
+                    if (!includes.isEmpty()) {
                         builder.addInclude(includes);
                     }
-                    if (excludes.size() > 0) {
+                    if (!excludes.isEmpty()) {
                         builder.addExclude(excludes);
                     }
                     String tablePrefix = properties.getBuildConf().getTablePrefix();
