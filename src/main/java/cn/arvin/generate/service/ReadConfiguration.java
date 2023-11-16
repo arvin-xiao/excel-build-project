@@ -2,6 +2,7 @@ package cn.arvin.generate.service;
 
 import cn.arvin.generate.entity.GenerateProperties;
 import cn.hutool.setting.dialect.Props;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
@@ -20,6 +21,7 @@ public class ReadConfiguration {
      */
     public static final String CON_NAME = "config.properties";
 
+    @Getter
     private GenerateProperties generateProperties;
 
     public ReadConfiguration() {
@@ -53,7 +55,4 @@ public class ReadConfiguration {
         generateProperties.setBuildConf(buildConf);
     }
 
-    public GenerateProperties getGenerateProperties() {
-        return generateProperties;
-    }
 }
