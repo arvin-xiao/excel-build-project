@@ -47,7 +47,7 @@ public class GenerateProperties {
     }
 
     @Data
-    public static class BuildConf{
+    public static class BuildConf {
         private String packageName;
         private String author;
         private String excludeTable;
