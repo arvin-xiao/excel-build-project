@@ -66,8 +66,6 @@ public class ReadExcel {
 
     /**
      * 生成多个表字符串表示形式 list
-     *
-     * @return
      */
     public List<String> getScriptList() {
         List<String> script = new ArrayList<>();
@@ -108,8 +106,6 @@ public class ReadExcel {
 
     /**
      * 返回字符串的形式
-     *
-     * @return
      */
     public String toScriptStr() {
         List<String> script = getScriptList();
@@ -123,9 +119,6 @@ public class ReadExcel {
 
     /**
      * 获取表名
-     *
-     * @param table
-     * @return
      */
     private SqlTable readTableName(SqlTable table) {
         ImportParams params = new ImportParams();
@@ -134,9 +127,7 @@ public class ReadExcel {
         params.setTitleRows(6);
         params.setStartSheetIndex(sheetIndex - 1);
         params.setLastOfInvalidRow(7);
-        ExcelImportResult<Map> result = ExcelImportUtil.importExcelMore(
-                new File(properties.getExcelPath()),
-                Map.class, params);
+        ExcelImportResult<Map<String, Object>> result = ExcelImportUtil.importExcelMore(new File(properties.getExcelPath()), Map.class, params);
 
         this.maxSheet = result.getWorkbook().getNumberOfSheets();
 
@@ -157,8 +148,6 @@ public class ReadExcel {
 
     /**
      * 获取字段
-     *
-     * @return
      */
     private List<ExcelRow> readFiled() {
         ImportParams params = new ImportParams();
@@ -186,9 +175,6 @@ public class ReadExcel {
             }
             return result;
         });
-        List<ExcelRow> list = ExcelImportUtil.importExcel(
-                new File(properties.getExcelPath()),
-                ExcelRow.class, params);
-        return list;
+        return ExcelImportUtil.importExcel(new File(properties.getExcelPath()), ExcelRow.class, params);
     }
 }
