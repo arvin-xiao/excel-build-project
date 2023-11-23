@@ -15,12 +15,9 @@ import java.util.List;
 @Slf4j
 public class DataBaseAutoImport {
 
-    private GenerateProperties properties;
-
     private Session session;
 
     public DataBaseAutoImport(GenerateProperties properties) {
-        this.properties = properties;
         GenerateProperties.DataSource dataSource = properties.getDataSource();
         if (StringUtils.isBlank(dataSource.getDatabase()) || StringUtils.isBlank(dataSource.getHost())
                 || StringUtils.isBlank(dataSource.getPassword()) || StringUtils.isBlank(dataSource.getUser())

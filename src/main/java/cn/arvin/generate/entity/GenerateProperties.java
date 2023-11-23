@@ -37,6 +37,11 @@ public class GenerateProperties {
      */
     private boolean buildJava = false;
 
+    /**
+     * 是否输出数据库文档
+     */
+    private boolean outputDatabaseDoc = false;
+
     @Data
     public static class DataSource {
         private String host;

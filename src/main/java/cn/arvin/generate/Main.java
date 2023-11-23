@@ -1,10 +1,7 @@
 package cn.arvin.generate;
 
 import cn.arvin.generate.entity.GenerateProperties;
-import cn.arvin.generate.service.BuildJavaProject;
-import cn.arvin.generate.service.DataBaseAutoImport;
-import cn.arvin.generate.service.ReadConfiguration;
-import cn.arvin.generate.service.ReadExcel;
+import cn.arvin.generate.service.*;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -24,6 +21,11 @@ public class Main {
             DataBaseAutoImport autoImport = new DataBaseAutoImport(properties);
             autoImport.execute(readExcel.getScriptList());
             log.info("创建数据表成功");
+        }
+
+        if (properties.isOutputDatabaseDoc()) {
+            DataBaseDocExport.outputDatabaseDoc(properties);
+            log.info("输出数据库文档成功");
         }
 
         if (properties.isBuildJava()) {
