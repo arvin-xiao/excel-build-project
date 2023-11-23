@@ -4,7 +4,7 @@ import cn.arvin.generate.entity.GenerateProperties;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
-import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -71,7 +71,7 @@ public class BuildJavaProject {
                             .mapperBuilder().enableFileOverride().enableBaseResultMap().enableBaseColumnList()
                             .entityBuilder().enableFileOverride().enableLombok().enableTableFieldAnnotation();
                 })
-                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .templateEngine(new VelocityTemplateEngine()) // 默认是Velocity引擎模板,不使用Freemarker引擎模板
                 .execute();
         log.info("------构建Java项目完成------");
     }

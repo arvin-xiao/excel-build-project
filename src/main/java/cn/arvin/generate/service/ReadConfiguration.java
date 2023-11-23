@@ -46,6 +46,7 @@ public class ReadConfiguration {
 
         generateProperties.setOutputScriptFile(props.getBool("outputScriptFile", true));
         generateProperties.setBuildJava(props.getBool("buildJava", false));
+        generateProperties.setOutputDatabaseDoc(props.getBool("outputDatabaseDoc", false));
         GenerateProperties.BuildConf buildConf = new GenerateProperties.BuildConf();
         buildConf.setAuthor(props.getStr("buildConf.author"));
         buildConf.setPackageName(props.getStr("buildConf.packageName"));
