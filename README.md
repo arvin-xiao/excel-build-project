@@ -8,7 +8,7 @@
 2. 自动创建数据表
 3. 根据数据表自动创建mybatis-plus项目代码包含（实体类，mapper文件与XML，service层文件，controller文件）
 4. 添加mybatis-plus默认模板
-5. 利用Screw生成数据库文档功能
+5. 利用screw生成数据库文档功能
 
 ### 待办（TODO）
 1.添加自定义mybatis-plus生成代码模板
